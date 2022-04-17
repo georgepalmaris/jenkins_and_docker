@@ -23,7 +23,7 @@ function App() {
     
             if (lat && long) {
                 // Make a request to our express backend
-                axios.get('/getweather', { 
+                axios.get('http://localhost:5000/getweather', { 
                     params: 
                     { 
                         long: long, 
