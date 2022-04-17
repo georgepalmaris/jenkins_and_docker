@@ -1,2 +1,2 @@
 # jenkins_and_docker
-For learning and implementating multibranch pipelines
+For learning and implementing multibranch pipelines
