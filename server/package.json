@@ -10,7 +10,7 @@
     "express": "^4.17.3"
   },
   "devDependencies": {
-      "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

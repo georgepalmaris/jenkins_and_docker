@@ -9,10 +9,26 @@ services:
     volumes:
       - /app/node_modules
       - ./server:/app
+    depends_on:
+      - mongo-database
     ports:
       - "5000:5000"
     environment:
-      - CHOKIDAR_USEPOLLING=true
+      CHOKIDAR_USEPOLLING: true
+
+  mongo-database:
+    container_name: mongo-database
+    restart: always
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - database-data:/data/db
+      - ./mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    environment:
+      MONGO_INIT_ROOT_USERNAME: george
+      MONGO_INIT_ROOT_PASSWORD: secret
+      MONGO_INITDB_DATABASE: weather
 
   nginx:
     container_name: nginx-proxy
@@ -36,6 +52,12 @@ services:
       - ./client:/app
     ports:
       - "3000:3000"
+    stdin_open: true
     environment:
-      - CHOKIDAR_USEPOLLING=true
-      - NODE_ENV=development
+      CHOKIDAR_USEPOLLING: true
+      NODE_ENV: development
+
+volumes:
+  database-data:
+
+
