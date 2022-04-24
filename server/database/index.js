@@ -1,6 +1,6 @@
 const mongo = require('mongoose');
 
-mongo.connect('mongodb://mongo-database:27017/weather', { 
+mongo.connect('mongodb://mongo-database:27017/pokemon', { 
     auth: 
     {
         username: "george",
