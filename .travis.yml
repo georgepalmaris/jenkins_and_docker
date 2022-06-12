@@ -28,11 +28,11 @@ jobs:
         env: "pokedock-client"
         on:
           branch: master
-        access_key: $AWS_ACCESS_KEY
-        secret_access_key: $AWS_SECRET_KEY
-        bucket_name: "elasticbeanstalk-eu-west-2-175975253570"
+        access_key: "$AWS_ACCESS_KEY"
+        secret_access_key: "$AWS_SECRET_KEY"
+        bucket: "elasticbeanstalk-eu-west-2-175975253570"
         bucket_path: "pokedock-client"
-        skip_cleanup: true
+        cleanup: false
 
     - name: 'Test Server'  
       services:
@@ -55,9 +55,9 @@ jobs:
         env: "pokedock-server"
         on:
           branch: master
-        access_key: $AWS_ACCESS_KEY
-        secret_access_key: $AWS_SECRET_KEY
-        bucket_name: "elasticbeanstalk-eu-west-2-175975253570"
+        access_key: "$AWS_ACCESS_KEY"
+        secret_access_key: "$AWS_SECRET_KEY"
+        bucket: "elasticbeanstalk-eu-west-2-175975253570"
         bucket_path: "pokedock-server"
-        skip_cleanup: true
+        cleanup: false
 
