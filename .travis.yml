@@ -1,18 +1,19 @@
 language: generic
+os: 
+  - linux
+dist:
+  - xenial
 
 jobs:
+  fast_finish: true
   include:
-    - name: 'Test Client'  
-      os: 
-        - linux
-      dist:
-        - xenial
+      name: 'Test Client'  
       services:
         - docker
 
+      install: skip
       before_install:
         - docker build -t pokedock-client -f './client/Dockerfile' './client'
-
       script:
       - docker run -e CI=true pokedock-client npm run test
 
@@ -22,17 +23,13 @@ jobs:
       #   app: "pokedock-client"
       #   env: "Pokedock-client-env"
 
-    - name: 'Test Server'  
-      os: 
-        - linux
-      dist:
-        - xenial
+      name: 'Test Server'  
       services:
         - docker
 
+      install: skip
       before_install:
         - docker build -t pokedock-server -f './server/Dockerfile' './server'
-
       script:
       - docker run -e CI=true pokedock-server npm run test
 
