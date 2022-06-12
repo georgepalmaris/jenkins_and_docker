@@ -5,7 +5,7 @@ const PokemonCard = ({id, name, image, type}) => {
     const style = `card-container ${type}`;
 
     return (
-        <div className={style}>
+        <div data-testid="pokemonCardTestId" className={style}>
             <div className="number">
                 <small>#0{id}</small>
             </div>

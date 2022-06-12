@@ -49,7 +49,7 @@ function App() {
             <div className="pokemon-container">
                 <div className="all-container">
                     { allPokemon.map((pokemon, index) => {
-                        return <PokemonCard 
+                        return <PokemonCard
                         id={pokemon.id}
                         name={pokemon.name} 
                         image={pokemon.sprites.other.dream_world.front_default} 

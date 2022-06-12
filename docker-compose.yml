@@ -14,7 +14,7 @@ services:
     ports:
       - "5000:5000"
     environment:
-      CHOKIDAR_USEPOLLING: true
+      CHOKIDAR_USEPOLLING: "true"
 
   mongo-database:
     container_name: mongo-database
@@ -34,7 +34,7 @@ services:
     container_name: nginx-proxy
     restart: always
     depends_on:
-      - server
+      - api
       - client
     build:
       dockerfile: Dockerfile
@@ -54,7 +54,7 @@ services:
       - "3000:3000"
     stdin_open: true
     environment:
-      CHOKIDAR_USEPOLLING: true
+      CHOKIDAR_USEPOLLING: "true"
       NODE_ENV: development
 
 volumes:

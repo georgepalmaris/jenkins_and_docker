@@ -10,10 +10,11 @@
     "express": "^4.17.3"
   },
   "devDependencies": {
+    "jest": "^28.1.1",
     "nodemon": "^2.0.15"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --config ./jest.config.json",
     "start": "node --max-http-header-size=16384 app.js",
     "watch": "nodemon --max-http-header-size=16384 app.js"
   },
