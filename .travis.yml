@@ -1,10 +1,44 @@
-sudo: required
-language: generic 
-services:
-  - docker
+language: generic
 
-before_install:
-  - docker build -t georgefinnpersonal/pokedock-client -f './client/Dockerfile' './client'
+jobs:
+  include:
+    - name: 'Test Client'  
+      os: 
+        - linux
+      dist:
+        - xenial
+      services:
+        - docker
 
-script:
-- docker run -e CI=true georgefinnpersonal/pokedock-client npm run test
+      before_install:
+        - docker build -t pokedock-client -f './client/Dockerfile' './client'
+
+      script:
+      - docker run -e CI=true pokedock-client npm run test
+
+      # deploy:
+      #   provider: elasticbeanstalk
+      #   region: "eu-west-2"
+      #   app: "pokedock-client"
+      #   env: "Pokedock-client-env"
+
+    - name: 'Test Server'  
+      os: 
+        - linux
+      dist:
+        - xenial
+      services:
+        - docker
+
+      before_install:
+        - docker build -t pokedock-server -f './server/Dockerfile' './server'
+
+      script:
+      - docker run -e CI=true pokedock-server npm run test
+
+      # deploy:
+      #   provider: elasticbeanstalk
+      #   region: "eu-west-2"
+      #   app: "pokedock-client"
+      #   env: "Pokedock-client-env"
+
