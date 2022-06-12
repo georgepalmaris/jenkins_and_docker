@@ -34,30 +34,30 @@ jobs:
         bucket_path: "pokedock-client"
         cleanup: false
 
-    - name: 'Test Server'  
-      services:
-        - docker
+    # - name: 'Test Server'  
+    #   services:
+    #     - docker
 
-      install: skip
-      before_install:
-        - docker build -t pokedock-server -f './server/Dockerfile.dev' './server'
-      script:
-      - docker run -e CI=true pokedock-server npm run test
+    #   install: skip
+    #   before_install:
+    #     - docker build -t pokedock-server -f './server/Dockerfile.dev' './server'
+    #   script:
+    #   - docker run -e CI=true pokedock-server npm run test
 
-      before_deploy:
-        - cd ./server
-      after_deploy:
-        - cd ..
-      deploy:
-        provider: elasticbeanstalk
-        region: "eu-west-2"
-        app: "pokedock-server"
-        env: "pokedock-server"
-        on:
-          branch: master
-        access_key_id: "$AWS_ACCESS_KEY"
-        secret_access_key: "$AWS_SECRET_KEY"
-        bucket: "elasticbeanstalk-eu-west-2-175975253570"
-        bucket_path: "pokedock-server"
-        cleanup: false
+    #   before_deploy:
+    #     - cd ./server
+    #   after_deploy:
+    #     - cd ..
+    #   deploy:
+    #     provider: elasticbeanstalk
+    #     region: "eu-west-2"
+    #     app: "pokedock-server"
+    #     env: "pokedock-server"
+    #     on:
+    #       branch: master
+    #     access_key_id: "$AWS_ACCESS_KEY"
+    #     secret_access_key: "$AWS_SECRET_KEY"
+    #     bucket: "elasticbeanstalk-eu-west-2-175975253570"
+    #     bucket_path: "pokedock-server"
+    #     cleanup: false
 
