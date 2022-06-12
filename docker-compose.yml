@@ -4,7 +4,7 @@ services:
   api:
     container_name: express-api
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: "./server"
     volumes:
       - /app/node_modules
@@ -37,7 +37,7 @@ services:
       - api
       - client
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: "./nginx"
     ports:
       - "4000:80"

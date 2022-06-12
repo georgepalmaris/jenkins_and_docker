@@ -8,4 +8,6 @@ RUN npm install
 
 COPY . .
 
-CMD [ "npm", "run", "watch"]
+RUN npm run build
+
+EXPOSE 80

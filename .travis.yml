@@ -13,7 +13,7 @@ jobs:
 
       install: skip
       before_install:
-        - docker build -t pokedock-client -f './client/Dockerfile' './client'
+        - docker build -t pokedock-client -f './client/Dockerfile.dev' './client'
       script:
       - docker run -e CI=true pokedock-client npm run test
 
@@ -40,7 +40,7 @@ jobs:
 
       install: skip
       before_install:
-        - docker build -t pokedock-server -f './server/Dockerfile' './server'
+        - docker build -t pokedock-server -f './server/Dockerfile.dev' './server'
       script:
       - docker run -e CI=true pokedock-server npm run test
 
