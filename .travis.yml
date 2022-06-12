@@ -7,7 +7,7 @@ dist:
 jobs:
   fast_finish: true
   include:
-      name: 'Test Client'  
+    - name: 'Test Client'  
       services:
         - docker
 
@@ -23,7 +23,7 @@ jobs:
       #   app: "pokedock-client"
       #   env: "Pokedock-client-env"
 
-      name: 'Test Server'  
+    - name: 'Test Server'  
       services:
         - docker
 
