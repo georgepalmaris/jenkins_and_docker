@@ -45,7 +45,7 @@ services:
   client:
     container_name: react-client
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: "./client"
     volumes:
       - /app/node_modules

@@ -1,13 +1,17 @@
-FROM node:latest
+FROM node:latest as builder
 
-WORKDIR /app
+WORKDIR '/app'
 
-COPY ["package.json", "package-lock.json*", "./"]
+COPY package.json .
 
 RUN npm install
 
 COPY . .
 
-RUN npm build
+RUN npm run build
+
+FROM nginx
 
 EXPOSE 80
+
+COPY --from=builder /app/build /usr/share/nginx/html
